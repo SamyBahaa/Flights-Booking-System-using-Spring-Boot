@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Flights_TBL")
+@Table
 public class Flights {
     @Id
     @GeneratedValue
