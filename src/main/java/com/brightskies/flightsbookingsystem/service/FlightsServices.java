@@ -39,9 +39,9 @@ public class FlightsServices {
         existingFlight.setArrival(flight.getArrival());
         existingFlight.setDeparture(flight.getDeparture());
         existingFlight.setFare(flight.getFare());
-        existingFlight.setFrom(flight.getFrom());
-        existingFlight.setTo(flight.getTo());
-        existingFlight.setTicket_class(flight.getTicket_class());
+        existingFlight.setFromPlcae(flight.getFromPlcae());
+        existingFlight.setToPlcae(flight.getToPlcae());
+        existingFlight.setTicketClass(flight.getTicketClass());
         return repository.save(existingFlight);
     }
 }
