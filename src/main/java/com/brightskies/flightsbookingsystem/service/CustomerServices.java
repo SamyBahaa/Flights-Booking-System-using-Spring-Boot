@@ -18,10 +18,22 @@ public class CustomerServices {
     @Autowired
     public FlightsRepository flightsrepository;
 
+    /**
+     * @param customer
+     * Add a customer to the database
+     * @return
+     */
     public Customer saveCustomer(Customer customer) {
         return repository.save(customer);
     }
 
+    /**
+     * @param fare
+     * @param fromPlace
+     * @param toPlace
+     * search for a flight depend on the price and from, to specific location that customer choose
+     * @return the available flights that match the requirement
+     */
     public List<Flights> searchFlight(double fare, String fromPlace, String toPlace){
         List<Flights> allFlights= flightsrepository.findAll();
         List<Flights> availableFlights = new ArrayList<>();
@@ -33,5 +45,45 @@ public class CustomerServices {
         }
         return availableFlights;
     }
-    
+
+    /**
+     * @param flightId
+     * @param customerId
+     * book a flight and add it to the customer flightsList
+     * @return a successful message of booking
+     */
+    public String bookFlight(int flightId,int customerId){
+        Flights existingFlight = flightsrepository.findById(flightId).orElse(null);
+        Customer existingCustomer = repository.findById(customerId).orElse(null);
+        existingCustomer.getFlightslist().add(existingFlight);
+        repository.save(existingCustomer);
+        return "Flight who's id = " + flightId + ", has been booked successfully !! ";
+    }
+
+    /**
+     * @param flightId
+     * @param customerId
+     * cancel a flight and remove it to the customer flightsList
+     * @return a successful message of canceling
+     */
+    public String cancelFlight(int flightId,int customerId){
+        Flights existingFlight = flightsrepository.findById(flightId).orElse(null);
+        Customer existingCustomer = repository.findById(customerId).orElse(null);
+        existingCustomer.getFlightslist().remove(existingFlight);
+        repository.save(existingCustomer);
+        return "Flight who's id = " + flightId + ", has been canceled successfully !! ";
+    }
+
+    /**
+     * @param flightId
+     * @param Class class type (First,Second,Economy or Business)
+     * upgrade the class of the flight
+     * @return a successful message of upgrading
+     */
+    public String upgradeFlight(int flightId,String Class){
+        Flights existingFlight = flightsrepository.findById(flightId).orElse(null);
+        existingFlight.setTicketClass(Class);
+        flightsrepository.save(existingFlight);
+        return "Flight who's id = " + flightId + ", has been upgraded successfully !! ";
+    }
 }
