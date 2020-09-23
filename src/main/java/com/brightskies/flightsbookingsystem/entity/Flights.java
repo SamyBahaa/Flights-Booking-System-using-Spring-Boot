@@ -18,10 +18,9 @@ public class Flights {
     @Id
     @GeneratedValue
     private int id;
-    private String fromPlcae;
-    private String toPlcae;
+    private String fromPlace;
+    private String toPlace;
     private String ticketClass;
-//    private String from ,to ,ticket_class;
     private float departure,arrival;
     private double fare;
 }

@@ -31,7 +31,7 @@ public class FlightsServices {
 
     public String deleteFlight(int id) {
         repository.deleteById(id);
-        return "Flight who's id =" + id + "has been removed successfully !! ";
+        return "Flight who's id =" + id + ", has been removed successfully !! ";
     }
 
     public Flights updateFlight(Flights flight) {
@@ -39,8 +39,8 @@ public class FlightsServices {
         existingFlight.setArrival(flight.getArrival());
         existingFlight.setDeparture(flight.getDeparture());
         existingFlight.setFare(flight.getFare());
-        existingFlight.setFromPlcae(flight.getFromPlcae());
-        existingFlight.setToPlcae(flight.getToPlcae());
+        existingFlight.setFromPlace(flight.getFromPlace());
+        existingFlight.setToPlace(flight.getToPlace());
         existingFlight.setTicketClass(flight.getTicketClass());
         return repository.save(existingFlight);
     }
