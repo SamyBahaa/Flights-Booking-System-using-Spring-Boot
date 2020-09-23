@@ -14,12 +14,12 @@ public class FlightsController {
     FlightsServices service;
 
     @PostMapping("/addFlight")
-    public Flights addProduct(@RequestBody Flights flight) {
+    public Flights addFlight(@RequestBody Flights flight) {
         return service.saveFlight(flight);
     }
 
     @PostMapping("/addFlights")
-    public List<Flights> addProducts(@RequestBody List<Flights> flights) {
+    public List<Flights> addFlights(@RequestBody List<Flights> flights) {
         return service.saveFlights(flights);
     }
 
@@ -29,7 +29,7 @@ public class FlightsController {
     }
 
     @GetMapping("/flightById/{id}")
-    public Flights findProductById(@PathVariable int id) {
+    public Flights findFlightById(@PathVariable int id) {
         return service.getFlightById(id);
     }
 

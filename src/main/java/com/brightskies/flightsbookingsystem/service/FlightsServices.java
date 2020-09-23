@@ -42,6 +42,7 @@ public class FlightsServices {
         existingFlight.setFromPlace(flight.getFromPlace());
         existingFlight.setToPlace(flight.getToPlace());
         existingFlight.setTicketClass(flight.getTicketClass());
+        existingFlight.setAvailable(flight.isAvailable());
         return repository.save(existingFlight);
     }
 }

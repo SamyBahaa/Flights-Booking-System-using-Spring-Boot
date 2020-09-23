@@ -23,4 +23,5 @@ public class Flights {
     private String ticketClass;
     private float departure,arrival;
     private double fare;
+    private boolean available;
 }
